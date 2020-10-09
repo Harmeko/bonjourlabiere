@@ -20,7 +20,7 @@ class Picture
     /**
      * @ORM\Column(type="string", columnDefinition="ENUM('submitted', 'accepted', 'rejected', 'scheduled', 'published')", length=12)
      */
-    private $status;
+    private $status = "submitted";
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -33,7 +33,14 @@ class Picture
     private $publishingTime;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="pictures")
+     * @ORM\Column(type="string")
+     */
+    private $pictureFilename;
+
+    /**
+     * Many features have one product. This is the owning side.
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="pictures")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
@@ -86,6 +93,26 @@ class Picture
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of pictureFilename
+     */ 
+    public function getPictureFilename()
+    {
+        return $this->pictureFilename;
+    }
+
+    /**
+     * Set the value of pictureFilename
+     *
+     * @return  self
+     */ 
+    public function setPictureFilename($pictureFilename)
+    {
+        $this->pictureFilename = $pictureFilename;
 
         return $this;
     }

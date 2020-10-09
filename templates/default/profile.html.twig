@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bonjour la biere!{% endblock %}
+
+{% block body %}
+
+<div class="base">
+    <h2>votre profil</h2>
+    <img src="https://api.adorable.io/avatars/150/{{app.user.email}}" alt="user profile">
+    <p>email: {{app.user.email}}</p>
+
+    <div>
+        <h3>vos photos proposées:</h3>
+        {% if app.user.pictures is defined %}
+            {% for picture in app.user.pictures %}
+                <img src="/uploads/pictures/{{ picture.pictureFileName }}" alt="">
+                <p>{{ picture.description }}</p>
+            {% endfor %}
+        {% else %}
+            <div>vous n'avez pas encore proposé de photos</div>
+        {% endif %}
+    </div>
+
+    {% if is_granted("ROLE_ADMIN") %}
+        <h3>Photos a valider:</h3>
+    {% endif %}
+</div>
+
+{% endblock %}

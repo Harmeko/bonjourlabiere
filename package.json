@@ -15,8 +15,10 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@material-ui/core": "^4.11.0",
         "prop-types": "^15.7.2",
         "react": "^16.13.1",
-        "react-dom": "^16.13.1"
+        "react-dom": "^16.13.1",
+        "react-on-rails": "^11.3.1"
     }
 }

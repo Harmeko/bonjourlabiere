@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bonjour la biere!{% endblock %}
+
+{% block body %}
+
+    <div class="base">
+        <img src="https://picsum.photos/500/600" alt="">
+        <p>date</p>
+        <p>description</p>
+        <p>auteur</p>
+        <p>proposer votre photo</p>
+
+        <p>pagination</p>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('admin') }}
+{% endblock %}
