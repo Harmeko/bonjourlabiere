@@ -9,39 +9,12 @@
         />
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
-
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         {% endblock %}
-        {# https://api.adorable.io/avatars/285/[email] #}
     </head>
     <body>
-        {# <div id="navbar"></div> #}
-        {# {{ react_component('Navbar', {'props': [], 'rendering': 'client_side'})}} #}
+        {{ react_component('Navbar', {'props': { "login": url('app_login'), "profile": url('app_profile'), "user": app.user.email ?? null }, 'rendering': 'client_side'})}}
 
-        <div class="navbar">
-            <h5 class="nav-title">Bonjour la biere</h5>
-            
-            <span class="nav-link">
-                <a  href="{{ url('app_about') }}">
-                    A propos
-                </a>
-            </span>
-            {% if app.user is null %}
-                <a class="nav-link" href="{{ url('app_login') }}">LOGIN</a>
-            {% else %}
-                <span class="nav-link">
-                    <a  href="{{ url('app_profile') }}">
-                        <img style="border-radius:100px;margin-right: 10px" src="https://api.adorable.io/avatars/30/{{app.user.email}}" alt="user picture">
-                    </a>
-                </span>
-            {% endif %}
-
-        </div>
-
-        <div class="main">
-            {% block body %}{% endblock %}
-        </div>
+        {% block body %}{% endblock %}
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}

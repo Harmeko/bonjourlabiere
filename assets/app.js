@@ -14,10 +14,12 @@ import './styles/app.css';
 // console.log('Hello Webpack Encore! Edit me in assets/app.js');
 // import React from 'react';
 import Navbar from './components/navbar.js';
+import Picture from './components/picture.js';
 
 import ReactOnRails from 'react-on-rails';
 // import ReactDOM from 'react-dom';
 
 
 ReactOnRails.register({ Navbar });
+ReactOnRails.register({ Picture });
 // ReactDOM.render(<Navbar />, document.getElementById('navbar'));

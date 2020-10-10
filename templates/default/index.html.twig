@@ -4,22 +4,6 @@
 
 {% block body %}
 
-
-<div class="base">
-    {% for picture in scheduled %}
-        {# <img src="https://picsum.photos/500/600" alt=""> #}
-        <img src="uploads/pictures/{{picture.pictureFileName}}" alt="">
-        <p>{{picture.publishingTime|date("d/m/Y")}}</p>
-        <p>{{picture.description}}</p>
-        <p>{{picture.user.email}}</p>
-    {% endfor %}
-        <p><a href="{{url('picture_new')}}">proposer votre photo</a></p>
-
-    <hr/>
-    <p>voir les précédents</p>
-    {% for i in 1..countPictures%}
-        <a href="{{ i }}">{{ i }}</a>
-    {% endfor %}
-</div>
+{{ react_component('Picture', {'props': { "newPicture": url('picture_new'), "navigation": url('app_archives'), "picture": scheduled, "count": countPictures, "page": page }, 'rendering': 'client_side'})}}
 
 {% endblock %}

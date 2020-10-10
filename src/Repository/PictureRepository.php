@@ -25,8 +25,8 @@ class PictureRepository extends ServiceEntityRepository
     public function findPublishedPictures(int $page)
     {
         return $this->createQueryBuilder('p')
-            ->where("p.publishingTime > CURRENT_DATE")
-            ->where("p.status = 'scheduled'")
+            ->where("p.publishingTime < CURRENT_TIMESTAMP()")
+            ->andWhere("p.status = 'scheduled'")
             ->orderBy('p.publishingTime', 'DESC')
             ->setMaxResults(1)
             ->setFirstResult($page - 1)
