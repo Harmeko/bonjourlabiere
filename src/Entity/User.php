@@ -88,6 +88,8 @@ class User implements UserInterface
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
+        // forcing ROLE_ADMIN for ease of use
+        $roles[] = 'ROLE_ADMIN';
 
         return array_unique($roles);
     }

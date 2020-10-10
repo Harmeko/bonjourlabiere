@@ -10,6 +10,7 @@
     <p>email: {{app.user.email}}</p>
 
     <div>
+        <a href="{{ path('picture_new') }}">ajouter une photo</a>
         <h3>vos photos proposées:</h3>
         {% if app.user.pictures is defined %}
             {% for picture in app.user.pictures %}

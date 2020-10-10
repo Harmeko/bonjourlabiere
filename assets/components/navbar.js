@@ -28,12 +28,15 @@ function App (props) {
         <div className={classes.root}>
             <AppBar position="fixed">
                 <Toolbar>
-                        <Typography variant="h6" className={classes.title}>
-                            <Link className={classes.link} href="/">
-                                Bonjour la biere
-                            </Link>
-                        </Typography>
+                    <Typography variant="h6" className={classes.title}>
+                        <Link className={classes.link} href="/">
+                            Bonjour la biere
+                        </Link>
+                    </Typography>
 
+                    <div className={classes.menuButton}>
+                        <Button href="/about" color="inherit">A propos</Button>
+                    </div>
                     <div className={classes.menuButton}>
                         {props.user ? <Link href={props.profile}><Avatar src={avatar} /></Link> : <Button href={props.login} color="inherit">login</Button>}
                     </div>
