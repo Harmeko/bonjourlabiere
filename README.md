@@ -14,11 +14,11 @@ INSTALLATION
 
 4. `php bin/console doctrine:schema:update --force`
 
-4 `yarn encore prod`
+5 `yarn encore prod`
 
-5. `php -S 127.0.0.1:8000 -t public`
+6. `php -S 127.0.0.1:8000 -t public`
 
-6. go to 127.0.0.1:8000 for the website
+7. go to 127.0.0.1:8000 for the website
 
 
 USAGE
