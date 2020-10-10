@@ -8,9 +8,17 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class PictureType extends AbstractType
 {
+    protected $auth;
+
+    public function __construct(AuthorizationCheckerInterface $auth) {
+        $this->auth = $auth;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -42,6 +50,21 @@ class PictureType extends AbstractType
                 ],
             ])
         ;
+        
+
+        if($this->auth->isGranted('ROLE_ADMIN')) {
+            $builder
+                ->add('publishingTime')
+                ->add('status', ChoiceType::class, [
+                'choices'  => [
+                    'soumis' => 'submitted',
+                    'accepté' => 'accepted',
+                    'rejeté' => 'rejected',
+                    'planifié' => 'scheduled'
+                    ]
+                ]);
+        }
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

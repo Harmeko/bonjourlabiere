@@ -22,19 +22,18 @@ class PictureRepository extends ServiceEntityRepository
     // /**
     //  * @return Picture[] Returns an array of Picture objects
     //  */
-    /*
-    public function findByExampleField($value)
+    public function findPublishedPictures(int $page)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+            ->where("p.publishingTime > CURRENT_DATE")
+            ->where("p.status = 'scheduled'")
+            ->orderBy('p.publishingTime', 'DESC')
+            ->setMaxResults(1)
+            ->setFirstResult($page - 1)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Picture

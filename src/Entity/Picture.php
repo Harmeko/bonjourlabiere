@@ -18,7 +18,7 @@ class Picture
     private $id;
 
     /**
-     * @ORM\Column(type="string", columnDefinition="ENUM('submitted', 'accepted', 'rejected', 'scheduled', 'published')", length=12)
+     * @ORM\Column(type="string", columnDefinition="ENUM('submitted', 'accepted', 'rejected', 'scheduled')", length=12)
      */
     private $status = "submitted";
 

@@ -18,10 +18,15 @@
     <body>
         {# <div id="navbar"></div> #}
         {# {{ react_component('Navbar', {'props': [], 'rendering': 'client_side'})}} #}
-        
+
         <div class="navbar">
             <h5 class="nav-title">Bonjour la biere</h5>
             
+            <span class="nav-link">
+                <a  href="{{ url('app_about') }}">
+                    A propos
+                </a>
+            </span>
             {% if app.user is null %}
                 <a class="nav-link" href="{{ url('app_login') }}">LOGIN</a>
             {% else %}

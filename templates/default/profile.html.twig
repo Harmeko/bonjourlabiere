@@ -13,8 +13,12 @@
         <h3>vos photos proposées:</h3>
         {% if app.user.pictures is defined %}
             {% for picture in app.user.pictures %}
-                <img src="/uploads/pictures/{{ picture.pictureFileName }}" alt="">
-                <p>{{ picture.description }}</p>
+                <div>
+                    <img src="/uploads/pictures/{{ picture.pictureFileName }}" alt="{{ picture.description }}">
+                    <p>statut: {{ picture.status }}</p>
+                    <p>{{ picture.description }}</p>
+                    <a href="{{ path('picture_edit', {'id': picture.id}) }}">editer</a>
+                </div>
             {% endfor %}
         {% else %}
             <div>vous n'avez pas encore proposé de photos</div>
@@ -22,7 +26,24 @@
     </div>
 
     {% if is_granted("ROLE_ADMIN") %}
+        <h3>Photos a planifier:</h3>
+        {% for picture in app.user.pictures %}
+            <div>
+                <img src="/uploads/pictures/{{ picture.pictureFileName }}" alt="{{ picture.description }}">
+                <p>statut: {{ picture.status }}</p>
+                <p>{{ picture.description }}</p>
+                <a href="{{ path('picture_edit', {'id': picture.id}) }}">editer</a>
+            </div>
+        {% endfor %}
         <h3>Photos a valider:</h3>
+        {% for picture in app.user.pictures %}
+            <div>
+                <img src="/uploads/pictures/{{ picture.pictureFileName }}" alt="{{ picture.description }}">
+                <p>statut: {{ picture.status }}</p>
+                <p>{{ picture.description }}</p>
+                <a href="{{ path('picture_edit', {'id': picture.id}) }}">editer</a>
+            </div>
+        {% endfor %}
     {% endif %}
 </div>
 

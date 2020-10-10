@@ -25,8 +25,8 @@
                 <td>{{ picture.publishingTime ? picture.publishingTime|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ picture.pictureFilename }}</td>
                 <td>
-                    <a href="{{ path('picture_show', {'id': picture.id}) }}">show</a>
-                    <a href="{{ path('picture_edit', {'id': picture.id}) }}">edit</a>
+                    <a href="{{ path('picture_show', {'id': picture.id}) }}">voir</a>
+                    <a href="{{ path('picture_edit', {'id': picture.id}) }}">éditer</a>
                 </td>
             </tr>
         {% else %}

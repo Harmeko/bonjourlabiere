@@ -10,14 +10,17 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/picture")
+ * @IsGranted("IS_AUTHENTICATED_FULLY")
  */
 class PictureController extends AbstractController
 {
     /**
      * @Route("/", name="picture_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function index(PictureRepository $pictureRepository): Response
     {
@@ -28,6 +31,7 @@ class PictureController extends AbstractController
 
     /**
      * @Route("/new", name="picture_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request, SluggerInterface $slugger): Response
     {
@@ -101,6 +105,7 @@ class PictureController extends AbstractController
 
     /**
      * @Route("/{id}", name="picture_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Picture $picture): Response
     {
